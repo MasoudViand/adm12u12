@@ -65,9 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/symptom/edit/{id}','SymptomController@edit');
     Route::post('admin/symptom/edit/{id}','SymptomController@update');
     Route::delete('admin/symptom/delete/{id}','SymptomController@destroy');
-/*    Route::get('admin/symptom/add','SymptomController@create')->name('addsymptom');
+    Route::get('admin/symptom/add','SymptomController@create')->name('addsymptom');
     Route::post('admin/symptom/add','SymptomController@store');
-    */
     Route::get('admin/symptom/serverSide', [
         'as'   => 'serverSide',
         'uses' => function () {

@@ -42,4 +42,29 @@ class SymptomController extends Controller
         $symptom->delete();
         return redirect('admin/symptom')->with('success','Item has been  deleted');
     }
+
+    public function create()
+    {
+        return view('admin/symptomcreate');
+    }
+
+    public function store(Request $request)
+    {
+        $data = request()->validate([
+            '_id' => 'required|unique:symptom_new|size:11',
+            'name' => 'required',
+            'displayname' => 'required',
+            'status' => 'required|integer|size:1'
+        ]);
+        $symptom = new Symptom();
+        $symptom->_id = $request->get('_id');
+        $symptom->name = $request->get('name');
+        $symptom->displayname = $request->get('displayname');
+        $symptom->status = $request->get('status');
+        $symptom->brief = $request->get('brief');
+        $symptom->frequency = $request->get('frequency');
+        $symptom->severity = $request->get('severity');
+        $symptom->save();
+        return redirect('admin/symptom')->with('success', 'Item has been successfully added');
+    }
 }

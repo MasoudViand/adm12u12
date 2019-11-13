@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>Symptoms List</h1>
     <div class="container">
-        <a href="{{--{{ url('admin/symptom/add') }}--}}"><button class="btn btn-info btn-lg pull-right"><i class="far fa-plus-square"></i> Add New</button></a>
+        <a href="{{ url('admin/symptom/add') }}"><button class="btn btn-info btn-lg pull-right"><i class="far fa-plus-square"></i> Add New</button></a>
         <div class="clearfix"></div>
     </div>
 
