@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
 use Yajra\DataTables\DataTables;
 
 
@@ -75,6 +76,24 @@ Route::group(['middleware' => ['auth']], function () {
                 ->addColumn('action', function ($symptom) {
                 return '<a href="/admin/symptom/edit/'.$symptom->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             })->make(true);
+        }
+    ]);
+
+    // Recipe
+    Route::get('admin/recipe', 'RecipeController@index')->name('recipe');
+    Route::get('admin/recipe/edit/{id}','RecipeController@edit');
+    Route::post('admin/recipe/edit/{id}','RecipeController@update');
+    Route::delete('admin/recipe/delete/{id}','RecipeController@destroy');
+    /*    Route::get('admin/symptom/add','RecipeController@create')->name('addsymptom');
+        Route::post('admin/symptom/add','RecipeController@store');*/
+    Route::get('admin/recipe/serverSide', [
+        'as'   => 'recipeServerSide',
+        'uses' => function () {
+            $recipes = App\Recipe::all();
+            return Datatables::of($recipes)
+                ->addColumn('action', function ($recipe) {
+                    return '<a href="/admin/recipe/edit/'.$recipe->id.'" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                })->make(true);
         }
     ]);
 });

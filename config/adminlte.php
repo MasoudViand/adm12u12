@@ -157,6 +157,11 @@ return [
             'url'  => 'admin/symptom',
             'icon' => 'fas fa-stethoscope',
         ],
+        [
+            'text' => 'Foods',
+            'url'  => 'admin/recipe',
+            'icon' => 'fas fa-utensils',
+        ],
 
         ['header' => 'SETTING'],
         [
